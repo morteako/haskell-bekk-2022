@@ -21,18 +21,21 @@ Eksempler:
 * map : https://hoogle.haskell.org/?hoogle=map&scope=set%3Astackage
 * [a] -> [a] funksjoner i base : https://hoogle.haskell.org/?hoogle=%2Bbase%20%5Ba%5D%20-%3E%20%5Ba%5D
 
-
 ## Lære
 
 ## Videoer
 
+### Haskell Beginners
+(Har ikke sett, men har sett andre talks av han fyren. virker flink)
+https://youtu.be/6MsQcUprO9o
+Litt lengre videoer som går igjennom mye viktig haskell-relatert.
 ### Haskell for imperetive programmers
 (Har ikke sett, men er nok bra) 
 https://www.youtube.com/watch?v=Vgu82wiiZ90&list=PLe7Ei6viL6jGp1Rfu0dil1JH1SHk9bgDV
 
 ### FP - Hutton
-(Har ikke sett, men er nok bra)
-Et kurs som tar for seg det grunneggende : 
+(Har ikke sett, men er nok bra. Er relatert til boken under)
+Et kurs som tar for seg det grunnleggende : 
 https://www.youtube.com/watch?v=rIprO6zoujM&list=PLF1Z-APd9zK7usPMx3LGMZEHrECUGodd3&index=3
 
 ### Bok : Programming in Haskell
@@ -43,6 +46,10 @@ Den er både presis, konsis og tydelig, uten å være forvirrende. Også med god
 Gir et godt grunnlag.
 Send meg en melding hvis man er interessert!
 
+### Bok : Learn you a Haskell for great good!
+En grei bok for å få litt oversikt over syntaks og features, men mangler gode oppgaver.
+Kan være kjekt å skumme.
+http://learnyouahaskell.com/chapters
 
 ## Oppgaver
 
