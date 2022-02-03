@@ -27,7 +27,7 @@ marp: true
 
 # Historie
 
-* Laget av en kommite for å samle forskning på lazy programmmeringsspråk 
+* Laget av en komite for å samle forskning på lazy programmmeringsspråk 
   * Fra Miranda
 * 1.0 : 1990 
   * Eldre enn Java og Python
@@ -58,6 +58,68 @@ funksjonsNavn aVal = Just aVal
 
 ---
 
+# Pattern matching : Funksjon med flere definisjoner
+
+## Man kan definere funksjoner en gang per case
+```haskell
+not :: Bool -> Bool
+not True = False
+not False = True
+```
+## Man har også case (som i Elm)
+```haskell
+not :: Bool -> Bool
+not b = case b of
+    True -> False
+    False -> True
+```
+
+---
+
+## Guards
+Istedenfor chaining av if-else, så har man guards
+```haskell
+describe :: Int -> String
+describe num 
+    | num > 100 = "Big"
+    | num < 0 = "Negative"
+    | otherwise = "Normal"
+
+--definert i Prelude
+otherwise = True
+```
+
+Kan kombineres med pattern matching
+```haskell
+firstElementAsStringIfOdd [x] | odd x = show x
+firstElementAsStringIfOdd _ = ""
+```
+---
+
+## Currying - by default
+
+Alle funksjoner tar inn et argument om gangen
+
+```haskell
+add :: Int -> Int -> Int
+add x y = x + y
+
+-- samme som
+add :: Int -> (Int -> Int)
+add = \x -> (\y -> x + y)
+
+> add 2 3
+5
+> (add 2) 3
+5
+
+f = add 2
+> f 5
+7
+```
+
+---
+
 # Funksjonsapplikasjon
 
 ## Binder til venstre
@@ -65,7 +127,7 @@ funksjonsNavn aVal = Just aVal
 ```haskell
 f g h x 
 -- blir parset som
-f (g (h x))
+((f g) h) x
 
 > head [negate,abs] 5
 -5
@@ -119,49 +181,6 @@ mapTailEvens x = map (*2) (filter even (tail x))
 ```
 ---
 
-# Pattern matching : Funksjon med flere definisjoner
-
-## Man kan definere funksjoner en gang per case
-```haskell
-not :: Bool -> Bool
-not True = False
-not False = True
-```
-## Man har også case (som i Elm)
-```haskell
-not :: Bool -> Bool
-not b = case b of
-    True -> False
-    False -> True
-```
-
----
-
-## Guards
-Istedenfor chaining av if-else, så har man guards
-```haskell
-describe :: Int -> String
-describe num 
-    | num > 100 = "Big"
-    | num < 0 = "Negative"
-    | otherwise = "Normal"
-
---definert i Prelude
-otherwise = True
-```
-
-Kan kombineres med pattern matching
-```haskell
-firstElementAsStringIfOdd [x] | odd x = show x
-firstElementAsStringIfOdd _ = ""
-```
----
-
-## Currying
-
-```haskell
-
-```
 ---
 
 ## Sections
@@ -245,6 +264,82 @@ Feilmeldinger
 ---
 
 
+## Typed holes
+
+Demo
+
+---
+
+## Imports
+
+
+```haskell
+-- Importer alt fra en modul
+> import Data.List
+> union [1,2,3] [3,4,5]
+[1,2,3,4,5]
+-- Importer spesifikke funksjoner eller typer
+> import Data.Maybe (maybe)
+> maybe 0 (+1) (Just 5)
+6
+-- Importer med namespace som modulnavnet
+> import qualified Data.Either
+> Data.Either.isLeft (Left 2)
+True
+-- Importer med eget namespace
+> import qualified Data.Set as Set
+> Set.fromList [1,2,3]
+fromList [1,2,3]
+-- Importer alt utenom spesifikke ting
+> import Data.List hiding (union)
+
+```
+
+---
+
+## Lister
+
+```haskell
+
+-- data [a] = [] | a : [a]
+
+map :: (a -> b) -> [a] -> [b]
+map _ [] = []
+map f (x:xs) = f x : map f xs
+
+
+xs = [1,2,3]
+xs' = 1:(2:(3:[]))
+xs'' = 1:2:3:[]
+```
+---
+
+## Lazy
+
+```haskell
+doSomething bool = if bool then trueCase else falseCalse 
+    where
+        trueCase = print True
+        falseCase = print False
+
+> take 2 [1,2,error "STOP", 3]
+[1,2]
+
+> map (\x -> div x 0) [1,2,0]
+[*** Exception: divide by zero
+
+> length $ map (\x -> div x 0) [1,2,0]
+3
+
+-- Lister er da "streams"
+ones = 1 : ones
+
+> take 5 ones
+[1,1,1,1,1]
+```
+
+---
+## Felles oppgaver -- Oppgaver.md
 ---
 
 ## Type classes
@@ -346,92 +441,6 @@ ordEq a b = a == b
 ```
 ---
 
-## Typed holes
-
-Demo
-
----
-
-## Imports
-
-
-```haskell
--- Importer alt fra en modul
-> import Data.List
-> union [1,2,3] [3,4,5]
-[1,2,3,4,5]
--- Importer spesifikke funksjoner eller typer
-> import Data.Maybe (maybe)
-> maybe 0 (+1) (Just 5)
-6
--- Importer med namespace som modulnavnet
-> import qualified Data.Either
-> Data.Either.isLeft (Left 2)
-True
--- Importer med eget namespace
-> import qualified Data.Set as Set
-> Set.fromList [1,2,3]
-fromList [1,2,3]
--- Importer alt utenom spesifikke ting
-> import Data.List hiding (union)
-
-```
-
----
-
-## Lister
-
-```haskell
-
--- data [a] = [] | a : [a]
-
-map :: (a -> b) -> [a] -> [b]
-map _ [] = []
-map f (x:xs) = f x : map f xs
-
-
-xs = [1,2,3]
-xs' = 1:(2:(3:[]))
-xs'' = 1:2:3:[]
-```
----
-
-## Lazy
-
-```haskell
-doSomething bool = if bool then trueCase else falseCalse 
-    where
-        trueCase = print True
-        falseCase = print False
-
-> take 2 [1,2,error "STOP", 3]
-[1,2]
-
-> map (\x -> div x 0) [1,2,0]
-[*** Exception: divide by zero
-
-> length $ map (\x -> div x 0) [1,2,0]
-3
-
--- Lister er da "streams"
-ones = 1 : ones
-
-> take 5 ones
-[1,1,1,1,1]
-```
-
----
-
-## Stack - dependencies
-
----
-## Felles oppgaver - Intro.hs
-
-Kan gjøre felles / samtidig.
-Hvis noen føler de har veldig kontroll, kan de løse de på egen hånd.
-
-Fjern kommentaren fra `-- doctest ["-isrc", "src/Intro.hs"]` altså fjern --
-for å kjøre tester
 
 
 
