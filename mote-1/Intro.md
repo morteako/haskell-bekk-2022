@@ -264,7 +264,7 @@ Feilmeldinger
 ---
 
 
-## Typed holes
+## Typed holes, where og let
 
 Demo
 
