@@ -24,6 +24,7 @@ data Sjanger = Jazz | Rock | Pop | Klassisk deriving Show
 
 data NumberedVal a = NumberedVal Int a deriving Show
 
+-- Kan skippe Ord for Tree, for mye jobb
 data Tree a b = Empty | NodeA a | NodeB b | Nodes (Tree a b) (Tree a b) 
     deriving Show
 
@@ -47,29 +48,23 @@ findMax = undefined
 -- 4
 -- Egen type class
 
--- Sortable er en type class for typer der man kan sortere innholdet og også gi en liste med elementene 
--- den har funksjonene sort og asList
+-- Sortable er en type class for typer der man kan sortere innholdet 
+-- den har funksjonen sort
 -- sort "1432" ==> "1234"
--- asList "1432" ==> "1432"
 -- sort (3,1) ==> (1,3)
--- asList (3,1) ==> [1,3]
 
--- Endre typene for sort og asList slik at til det de burde være
+
 
 class Sortable a where
     sort :: a --ikke riktig type, endre den til noe som gir mening 
-    asList :: [Int] --ikke riktig type, endre den til noe som gir mening 
 
 
 
--- dette burde alltid være sant : asList (sort xs) == List.sort (asList xs)
--- Prøv å kom på en annen egenskap som alltid burde være sann
-
-Implementer for
-String
-[Int]
-(Int,Int)
-(Char,Char,Char)
+-- Implementer for
+-- String
+-- [Int]
+-- (Int,Int)
+-- (Char,Char,Char)
 
 -- bruk : Data.List.sort , som er importert
 
@@ -81,15 +76,8 @@ String
 -- 6
 -- Legg til en funksjon : sortReverse
 
--- Tips til ting som kan brukes for å implementere:
--- sortOn
--- sortWith
--- Data.Ord.Down
-
 
 -- 7
--- Finn flere instancer
 
--- Finn minst 1 instance for en type fra standardlib
-
--- Lag minst en egen type og lag instance
+main = do
+    putStrLn ":)"
