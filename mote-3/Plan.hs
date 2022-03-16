@@ -3,6 +3,8 @@
 {-# LANGUAGE KindSignatures #-}
 {-# LANGUAGE RankNTypes #-}
 
+import qualified Data.Map as Map
+import qualified Data.Set as Set
 import Prelude hiding (Foldable, Monoid, Semigroup)
 
 type TODO = forall a. a
@@ -43,6 +45,7 @@ intList = IntContainer [1] :: IntContainer []
 data M f = M (f Maybe)
 
 -- hva blir kinden?
+-- hva kan vi putte inn for f?
 
 -- Type classes
 class Summable (f :: * -> *) where
@@ -92,19 +95,32 @@ class Foldable f where
 -- Hadde det ikke vært kjekt om typene kunne bestemt kombineringsfunksjonen og startelementet?
 -- Legge til fold til Foldable
 
---
-class Monoid a where
-    mempty :: a
-    (<>) :: a -> a -> a
+fold :: TODO
+fold = undefined
 
+-- Trenger å vite noe om verdiene
+-- Kombineringsfunksjon
+-- element
+-- Monoids!
+
+-- assosiativt
+-- identitetselement
+-- aggregering
+-- paralell
+
+-- Ordering
 -- [a]
+--
 
--- Hva gjør vi med typer som har mange forskjellige Monoids? feks
+-- Hva gjør vi med typer som kan forme forskjellige Monoids? feks
 -- tall: (+) 0, (*) 1, min MAX_VALUE, max MIN_VALUE, osv
 -- booleans : (&&) True, (||) False, xor False
 -- newtypes!
 
---
+-- Set, Map
+
+-- IKKE MONOIDS?
+-- (-)
 
 -- Kombinere monoids
 -- (a,b)
@@ -113,3 +129,8 @@ class Monoid a where
 -- foldMap . Legge til
 
 -- skrive foldMap med foldr
+
+-- Kun (<>)?
+-- F.eks. non-empty list
+-- First, Last
+-- Maybe

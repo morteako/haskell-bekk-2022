@@ -67,6 +67,12 @@ toList' = undefined
 
 -- Monoids
 
+-- skriv en Monoid Instance for
+data Three = T1 | T2 | T3
+
+-- "sketsj" noen flere i hodet . Ta inspirasjon fra fra tidligere monoids vi har sett på
+
+-- Bruker fold/foldMap til å kombinere strengere i exFold (altså "abc")
 exFold :: [Maybe String]
 exFold = [Just "a", Nothing, Just "b", Just "c"]
 
