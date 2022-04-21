@@ -20,6 +20,15 @@ instance MyFunctor Maybe where
     fmap :: (a -> b) -> Maybe a -> Maybe b
     fmap = error "todo"
 
+-- | OPPGAVE : implementer MyFunctor (Either e)
+-- >>> fmap (+1) (Right 1)
+-- Right 2
+-- >>> fmap (+1) (Left 1)
+-- Left 1
+instance MyFunctor (Either e) where
+    fmap :: (a -> b) -> Either e a -> Either e b
+    fmap = error "todo"
+
 data OneOrTwo a = One a | Two a a
     deriving (Show)
 
