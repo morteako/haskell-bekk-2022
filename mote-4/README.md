@@ -1,5 +1,8 @@
 # Functors
 
+## Notes
+`ghcid Main.hs -r`
+
 ## Tester
 
 Installer doctest : `stack install doctest`
