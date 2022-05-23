@@ -22,7 +22,12 @@ setValue = error "todo"
 data State s a = State (s -> (a, s))
 
 instance MyFunctor (State s) where
-    fmap = error "todo"
+    fmap f (State s2as) =
+        State
+            ( \s ->
+                let (a, s') = s2as s
+                 in (f a, s')
+            )
 
 data Identity a = Identity a
 
