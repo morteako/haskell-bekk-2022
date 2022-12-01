@@ -1,0 +1,16 @@
+/Users/mortenkolstad/haskell-bekk-2022/overloaded-strings/overloaded-strings.cabal:
+  hash: 864353b8311f353be5dbcc54b02b593736df6ebdd28729038bed634e64a8f8bc
+? /Users/mortenkolstad/haskell-bekk-2022/overloaded-strings/.stack-work/dist/x86_64-osx/Cabal-3.4.1.0/build/overloaded-strings/autogen/cabal_macros.h
+: hash: b0537c7d2a37e9992bbf34efc1a71a0143e063addba4ac6aaef943272757beb6
+? /Users/mortenkolstad/haskell-bekk-2022/overloaded-strings/.stack-work/dist/x86_64-osx/Cabal-3.4.1.0/build/overloaded-strings/autogen/Paths_overloaded_strings.hs
+: hash: bcb85bfb50fc0de447c5d16e5e7766e5297b08852120830031d335cd970f5e48
+/Users/mortenkolstad/haskell-bekk-2022/overloaded-strings/CHANGELOG.md:
+  hash: 131f1f7f790ce83f7dc06b0a0f2cd0f46c82fa185c93563ba3de51df60ecc59b
+/Users/mortenkolstad/haskell-bekk-2022/overloaded-strings/README.md:
+  hash: ad61e2df5bf1ec0b49725b194ecf917d3c47086fe2c4c657293826c129131bd3
+/Users/mortenkolstad/.ghcup/ghc/9.0.2/lib/ghc-9.0.2/lib/x86_64-osx-ghc-9.0.2/rts-1.0.2/include/ghcversion.h:
+  hash: 3b6c0f16983344ce12525816947d892da98bc96f17a664531494f515b9356c81
+/Users/mortenkolstad/haskell-bekk-2022/overloaded-strings/src/Main.hs:
+  hash: 36b4234172b25938ecf88a82f014fed25f81f0e4d80953379e7760a4c4060c13
+/Users/mortenkolstad/haskell-bekk-2022/overloaded-strings/package.yaml:
+  hash: b6b08de6b39bd4bb2ece57bdb28f19bbd91ad5e47c9ad22da0daa55c44d2f7ae
