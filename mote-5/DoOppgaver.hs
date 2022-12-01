@@ -7,26 +7,36 @@ import Text.Read
 d1 = Just 1 >>= halve
 
 d1do = do
-    undefined
+    x <- Just 1
+    halve x
 
 d2 = Just 2 >>= \x -> halve x >>= \_ -> Just x
 
 d2do = do
-    undefined
+    x <- Just 2
+    halve x
+    return x
 
 {- | skriv map3 med do-notation. Bonus : uten do-notation
  >>> map3 (\x y z -> x+y+z) (Just 3) (Just 3) (Just 3)
  Just 9
 -}
 map3 :: Monad m => (a -> b -> c -> d) -> m a -> m b -> m c -> m d
-map3 = error "todo"
+map3 f ma mb mc = do
+    a <- ma
+    b <- mb
+    c <- mc
+    return $ f a b c
 
 map3AndThen :: Monad m => (a -> b -> c -> d) -> m a -> m b -> m c -> m d
 map3AndThen = error "todo"
 
 -- skriv andMap med do-notation
 andMap :: Monad m => m (a -> b) -> m a -> m b
-andMap = error "todo"
+andMap mab ma = do
+    f <- mab
+    a <- ma
+    return $ f a
 
 -- Oppgave
 
@@ -36,10 +46,15 @@ readInt = readMaybe
 halve :: Int -> Maybe Int
 halve x = if mod x 2 == 0 then Just (div x 2) else Nothing
 
--- lag en funksjon som leser et tall fra string og så forsøker å dele det på to to ganger, og så gang det med 10
+-- lag en funksjon som leser et tall fra string og
+-- så forsøker å dele det på to to ganger, og så gang det med 10
 -- med do-notation
 readAndHalve2TimesThenTimes10 :: String -> Maybe Int
-readAndHalve2TimesThenTimes10 = undefined
+readAndHalve2TimesThenTimes10 str = do
+    int <- readInt str
+    h1 <- halve int
+    h2 <- halve h1
+    return $ h2 * 10
 
 {- | få list1233 til å bli som i testen, ved å bytte ut  de to første undefined med funksjoner
  >>> list1233

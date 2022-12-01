@@ -65,7 +65,19 @@ instance Monad Identity where
  Just 2
 -}
 join :: MyMonad m => m (m a) -> m a
-join = error "todo"
+join mma = mma >>= id
+
+join' mma = do
+    ma <- mma
+    ma
+
+join'' = do
+    xs <- [[1, 2, 3], [3, 4, 5]]
+    xs
+
+-- >>= -- bind
+bind :: MyMonad m => m a -> (a -> m b) -> m b
+bind ma f = join (fmap f ma)
 
 -- | bonus : implementer (>>=) ved hjelp av join og fmap
 andThenJoin :: MyMonad m => (a -> m b) -> m a -> m b
