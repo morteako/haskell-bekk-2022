@@ -2,6 +2,7 @@
 
 module Main (main) where
 
+import Control.Monad.Except
 import Text.Read (readMaybe)
 
 -- lese to tall fra bruker i loop
@@ -14,26 +15,28 @@ import Text.Read (readMaybe)
 
 -- printe alle gamle tall hver gang
 
+type IoWithError a = ExceptT String IO a
+
+getNum :: IoWithError Int
 getNum = do
-  putStr "Input num :> "
-  x <- getLine
+  lift $ putStr "Input num :> "
+  x <- lift getLine
   case readMaybe @Int x of
-    Nothing -> pure $ Left $ "invalid number " <> x
-    Just num -> pure $ Right num
+    Nothing -> ExceptT $ pure $ Left $ "invalid number " <> x
+    Just num -> ExceptT $ pure $ Right num
 
-loop :: IO ()
-loop = do
-  a <- getNum
-  case a of
-    Left e -> print e
-    Right a -> do
-      b <- getNum
-      case b of
-        Left e -> print e
-        Right b -> print [a .. b]
-
-  loop
+loop :: IoWithError ()
+loop =
+  flip
+    catchError
+    (lift . print)
+    ( do
+        a <- getNum
+        b <- getNum
+        lift $ print [a .. b]
+    )
+    >> loop
 
 main :: IO ()
 main = do
-  loop
+  void $ runExceptT loop
