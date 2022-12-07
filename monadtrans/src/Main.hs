@@ -1,4 +1,5 @@
 {-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE ViewPatterns #-}
 
 module Main (main) where
 
@@ -17,7 +18,7 @@ import Text.Read (readMaybe)
 
 -- printe alle gamle tall hver gang
 
-type IoWithError a = ReaderT String (ExceptT String (StateT [(Int, Int)] IO)) a
+type IoWithError a = ReaderT String (ExceptT String (StateT (Int, [(Int, Int)]) IO)) a
 
 getNum :: IoWithError Int
 getNum = do
@@ -25,7 +26,11 @@ getNum = do
   liftIO $ putStr $ "Input num " <> msg <> ":> "
   x <- liftIO getLine
   case readMaybe @Int x of
-    Nothing -> throwError $ "invalid number " <> x
+    Nothing -> do
+      (succ -> c, xs) <- get
+      liftIO $ putStrLn $ "Error count : " <> show c
+      put (c, xs)
+      throwError $ "invalid number " <> x
     Just num -> pure num
 
 loop :: IoWithError ()
@@ -34,15 +39,15 @@ loop =
     catchError
     (liftIO . print)
     ( do
-        prevs <- get
+        prevs <- gets snd
         liftIO $ putStr "PREVS " >> print prevs
         a <- getNum
         b <- getNum
-        modify ((a, b) :)
+        modify (\(c, xs) -> (c, (a, b) : xs))
         liftIO $ print [a .. b]
     )
     >> loop
 
 main :: IO ()
 main = do
-  void $ flip evalStateT [] $ runExceptT $ flip runReaderT "MSG" loop
+  void $ flip evalStateT (0, []) $ runExceptT $ flip runReaderT "MSG" loop
