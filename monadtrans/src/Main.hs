@@ -22,8 +22,8 @@ getNum = do
   lift $ putStr "Input num :> "
   x <- lift getLine
   case readMaybe @Int x of
-    Nothing -> ExceptT $ pure $ Left $ "invalid number " <> x
-    Just num -> ExceptT $ pure $ Right num
+    Nothing -> throwError $ "invalid number " <> x
+    Just num -> pure num
 
 loop :: IoWithError ()
 loop =
