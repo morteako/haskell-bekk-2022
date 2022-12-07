@@ -1,0 +1,16 @@
+/Users/mortenkolstad/.ghcup/ghc/9.0.2/lib/ghc-9.0.2/lib/x86_64-osx-ghc-9.0.2/rts-1.0.2/include/ghcversion.h:
+  hash: 3b6c0f16983344ce12525816947d892da98bc96f17a664531494f515b9356c81
+? /Users/mortenkolstad/haskell-bekk-2022/monadtrans/.stack-work/dist/x86_64-osx/Cabal-3.4.1.0/build/monadtrans/autogen/Paths_monadtrans.hs
+: hash: 0c3fd0a6080e1256c5fe48f88e4198deab7d3d36dd9bf39b257396baeb966c76
+? /Users/mortenkolstad/haskell-bekk-2022/monadtrans/.stack-work/dist/x86_64-osx/Cabal-3.4.1.0/build/monadtrans/autogen/cabal_macros.h
+: hash: 68c80cd537c617bb54b088bb6f99b4574455d37f6819841f1d4d1c186eb803e4
+/Users/mortenkolstad/haskell-bekk-2022/monadtrans/CHANGELOG.md:
+  hash: fdc5976e41e2ffa903ab7fc455057aafa871b5d2da68df12569ea195aafc016b
+/Users/mortenkolstad/haskell-bekk-2022/monadtrans/README.md:
+  hash: ffeea12655c48bcf2a1cb9faea7e923530cb9be8b5de838e768fb44a3e5600aa
+/Users/mortenkolstad/haskell-bekk-2022/monadtrans/monadtrans.cabal:
+  hash: cf3c374c67d49de3e9ca20d39a50e114d288d0c1bdc67ee980a820ef598b33d5
+/Users/mortenkolstad/haskell-bekk-2022/monadtrans/package.yaml:
+  hash: 8dbff39ac8448283ac43423b84a96eb49dc7e9ed2a7e2f597df1b7a514834ed0
+/Users/mortenkolstad/haskell-bekk-2022/monadtrans/src/Main.hs:
+  hash: 36b4234172b25938ecf88a82f014fed25f81f0e4d80953379e7760a4c4060c13
