@@ -31,7 +31,7 @@ version = Version [0,1,0,0] []
 bindir, libdir, dynlibdir, datadir, libexecdir, sysconfdir :: FilePath
 
 bindir     = "/Users/mortenkolstad/haskell-bekk-2022/monadtrans/.stack-work/install/x86_64-osx/8e5709e566a98b8ee3e84bfc044ee1d129a04176030e0425c8498e5627dc5774/9.0.2/bin"
-libdir     = "/Users/mortenkolstad/haskell-bekk-2022/monadtrans/.stack-work/install/x86_64-osx/8e5709e566a98b8ee3e84bfc044ee1d129a04176030e0425c8498e5627dc5774/9.0.2/lib/x86_64-osx-ghc-9.0.2/monadtrans-0.1.0.0-KLKXqg8FXlW271UoKehlEi-monadtrans"
+libdir     = "/Users/mortenkolstad/haskell-bekk-2022/monadtrans/.stack-work/install/x86_64-osx/8e5709e566a98b8ee3e84bfc044ee1d129a04176030e0425c8498e5627dc5774/9.0.2/lib/x86_64-osx-ghc-9.0.2/monadtrans-0.1.0.0-FLGmVPc4R7JInIB2sPtV7z-monadtrans"
 dynlibdir  = "/Users/mortenkolstad/haskell-bekk-2022/monadtrans/.stack-work/install/x86_64-osx/8e5709e566a98b8ee3e84bfc044ee1d129a04176030e0425c8498e5627dc5774/9.0.2/lib/x86_64-osx-ghc-9.0.2"
 datadir    = "/Users/mortenkolstad/haskell-bekk-2022/monadtrans/.stack-work/install/x86_64-osx/8e5709e566a98b8ee3e84bfc044ee1d129a04176030e0425c8498e5627dc5774/9.0.2/share/x86_64-osx-ghc-9.0.2/monadtrans-0.1.0.0"
 libexecdir = "/Users/mortenkolstad/haskell-bekk-2022/monadtrans/.stack-work/install/x86_64-osx/8e5709e566a98b8ee3e84bfc044ee1d129a04176030e0425c8498e5627dc5774/9.0.2/libexec/x86_64-osx-ghc-9.0.2/monadtrans-0.1.0.0"

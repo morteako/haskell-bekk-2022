@@ -15,9 +15,9 @@ extra-source-files:
 dependencies:
   - base >= 4.7 && < 5
   - mtl
+  - transformers
 
 ghc-options:
-- -Wall
 - -Wcompat
 - -Widentities
 - -Wincomplete-record-updates
@@ -25,7 +25,6 @@ ghc-options:
 - -Wmissing-export-lists
 - -Wmissing-home-modules
 - -Wpartial-fields
-- -Wredundant-constraints
 
 executables:
   monadtrans:
