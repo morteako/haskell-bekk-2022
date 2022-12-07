@@ -2,6 +2,8 @@
 
 module Main (main) where
 
+import Text.Read (readMaybe)
+
 -- lese to tall fra bruker i loop
 -- gi liste fra tall..tall
 -- legge på feilmelding
@@ -15,13 +17,21 @@ module Main (main) where
 getNum = do
   putStr "Input num :> "
   x <- getLine
-  pure $ read @Int x
+  case readMaybe @Int x of
+    Nothing -> pure $ Left $ "invalid number " <> x
+    Just num -> pure $ Right num
 
 loop :: IO ()
 loop = do
   a <- getNum
-  b <- getNum
-  print $ [a .. b]
+  case a of
+    Left e -> print e
+    Right a -> do
+      b <- getNum
+      case b of
+        Left e -> print e
+        Right b -> print [a .. b]
+
   loop
 
 main :: IO ()
