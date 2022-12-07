@@ -3,6 +3,7 @@
 module Main (main) where
 
 import Control.Monad.Except
+import Control.Monad.Reader
 import Control.Monad.State
 import Text.Read (readMaybe)
 
@@ -16,11 +17,12 @@ import Text.Read (readMaybe)
 
 -- printe alle gamle tall hver gang
 
-type IoWithError a = ExceptT String (StateT [(Int, Int)] IO) a
+type IoWithError a = ReaderT String (ExceptT String (StateT [(Int, Int)] IO)) a
 
 getNum :: IoWithError Int
 getNum = do
-  liftIO $ putStr "Input num :> "
+  msg <- ask
+  liftIO $ putStr $ "Input num " <> msg <> ":> "
   x <- liftIO getLine
   case readMaybe @Int x of
     Nothing -> throwError $ "invalid number " <> x
@@ -43,4 +45,4 @@ loop =
 
 main :: IO ()
 main = do
-  void $ flip evalStateT [] $ runExceptT loop
+  void $ flip evalStateT [] $ runExceptT $ flip runReaderT "MSG" loop
