@@ -15,6 +15,7 @@ extra-source-files:
 dependencies:
   - base >= 4.7 && < 5
   - mtl
+  - transformers
 
 ghc-options:
 - -Wcompat
@@ -27,5 +28,14 @@ ghc-options:
 
 executables:
   monadtrans:
-    source-dirs:      src
+    source-dirs:      src/Trans
     main:             Main.hs
+
+  reader:
+    source-dirs:      src/SR
+    main:             Main.hs
+
+  state:
+    source-dirs:      src/State
+    main:             Main.hs
+
