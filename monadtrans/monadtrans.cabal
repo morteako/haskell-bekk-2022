@@ -25,7 +25,7 @@ executable monadtrans
       Paths_monadtrans
   hs-source-dirs:
       src/Trans
-  ghc-options: -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields
+  ghc-options: -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields
   build-depends:
       base >=4.7 && <5
     , mtl
@@ -38,7 +38,7 @@ executable reader
       Paths_monadtrans
   hs-source-dirs:
       src/SR
-  ghc-options: -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields
+  ghc-options: -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields
   build-depends:
       base >=4.7 && <5
     , mtl
@@ -51,7 +51,7 @@ executable state
       Paths_monadtrans
   hs-source-dirs:
       src/State
-  ghc-options: -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields
+  ghc-options: -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-home-modules -Wpartial-fields
   build-depends:
       base >=4.7 && <5
     , mtl
