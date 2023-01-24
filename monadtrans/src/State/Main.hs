@@ -2,28 +2,27 @@ module Main where
 
 import System.Environment (getArgs)
 
-newtype MyState s a = MyState (s -> (a, s))
-
 import Control.Monad.State
 import Data.Functor.Identity
 
+newtype MyState s a = MyState (s -> (a, s))
+
 -- newtype State s a = State {runState :: s -> (a, s)}
 
-get' :: MyState s s
-get' = undefined
+-- get' :: MyState s s
+-- get' = undefined
 
-put' :: s -> MyState s ()
-put' = undefined
+-- put' :: s -> MyState s ()
+-- put' = undefined
 
-modify :: (s -> s) -> MyState s ()
-modify f = do
-    s <- get
-    put $ f s
+-- modify :: (s -> s) -> MyState s ()
+-- modify f = do
+--     s <- get
+--     put $ f s
 
--- øker og gir siste verdi, ++i
-inc :: State Int Int
-inc = undefined
-
+-- -- øker og gir siste verdi, ++i
+-- inc :: State Int Int
+-- inc = undefined
 
 -- push :: Int -> State [Int] ()
 -- pop :: State [Int] Int
@@ -31,7 +30,6 @@ inc = undefined
 
 -- incTop :: State [Int] ()
 -- incTop = undefined
-
 
 main :: IO ()
 main = do
