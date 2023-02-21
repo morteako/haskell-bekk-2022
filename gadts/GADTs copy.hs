@@ -3,105 +3,58 @@
 {-# LANGUAGE LambdaCase #-}
 {-# OPTIONS_GHC -fwarn-incomplete-patterns #-}
 
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
+data Nat = Z | S Nat
 
-data IntOrString a where
-    MyInt :: Int -> IntOrString Int
-    MyString :: String -> IntOrString String
+data Fin (n :: Nat) where
+    FZ :: Fin n
+    FS :: Fin n -> Fin (S n)
 
-getInt :: IntOrString Int -> Int
-getInt (MyInt i) = i
-
-getString :: IntOrString String -> String
-getString (MyString i) = i
-
-getVal :: IntOrString a -> a
-getVal (MyInt i) = i
-getVal (MyString s) = s
-
---
--- data Maybe' a = Nothing | Just a
-
-data Maybe'' b a where
-    Nothing' :: Maybe'' Int a
-    Just' :: a -> Maybe'' String a
-
-withDefault :: Maybe a -> a -> a
-withDefault Nothing a = a
-withDefault (Just b) _ = b
-
-data M a = M
-
-data Void
-
-mex :: M Void
-mex = M
-
-mint = Just' 1
-
-mstring = Just' "he"
-
-get :: Maybe'' String a -> a
-get (Just' a) = a
-
--- withDefault' :: Maybe'' -> a -> a
--- withDefault' Nothing' a = a
--- withDefault' (Just' b) _ = b
--- type Isak = IntOrString Bool
-
--- v = undefined :: Isak
+f :: Fin (S (S Z)) -> Int
+f FZ = 0
+f (FS FZ) = 1
+f (FS (FS _)) = 2 -- hmm
 
 -- exp
 
 data Exp a where
-    Lit :: Int -> Exp Int
-    LitB :: Bool -> Exp Bool
+    Var :: String -> Exp Int
+    ILit :: Int -> Exp Int
+    BLit :: Bool -> Exp Bool
     Add :: Exp Int -> Exp Int -> Exp Int
-    If :: Exp Bool -> Exp Int -> Exp Int -> Exp Int
+    LTExp :: Ord a => Exp a -> Exp a -> Exp Bool
+    If :: Exp Bool -> Exp a -> Exp a -> Exp a
 
-eval :: Exp Int -> Int
-eval (Lit i) = i
-eval (Add a b) = eval a + eval b
-eval (If (LitB b) t f) = if b then eval t else eval f
-
--- data Exp a
-
--- eval :: (String -> Int) -> Exp a -> a
--- eval = undefined
+eval :: (String -> Int) -> Exp a -> a
+eval env (Var s) = env s
+eval env (ILit s) = s
+eval env (BLit s) = s
+eval env (Add a b) = eval env a + eval env b
+eval env (LTExp a b) = eval env a < eval env b
+eval env (If t a b) = if eval env t then eval env a else eval env b
 
 -- existentials
+data TypeRep a
 
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
--- ..............
+data Dynamic where
+    Dyn :: TypeRep a -> a -> Dynamic
+
+data Unhid a where
+    Unhid :: (String -> a) -> (a -> String) -> Unhid a
+
+sUnhid :: Unhid a -> String -> String
+sUnhid (Unhid sa as) s = as $ sa s
+
+data Hid where
+    Hid :: (String -> a) -> (a -> String) -> Hid
+
+sHid :: Hid -> String -> String
+sHid (Hid sa as) s = as $ sa s
+
+-- existentials
+data Showable where
+    Showable :: Show a => a -> Showable
+
+ys = map (\case (Showable a) -> show a) [Showable 1, Showable "hei"]
 
 ---- REAL WORLD
 data CompanyInformation

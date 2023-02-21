@@ -3,8 +3,6 @@
 {-# LANGUAGE LambdaCase #-}
 {-# OPTIONS_GHC -fwarn-incomplete-patterns #-}
 
-import Distribution.Backpack (DefUnitId (unDefUnitId))
-
 -- skriv om disse datatypene til GADT syntax
 data Result e a = Err e | Ok a
 
@@ -48,15 +46,5 @@ eval getIntVarValue getBoolVarValue = undefined
 -- husk å optimize alle sub-exps
 optimize :: GExp a -> GExp a
 optimize = undefined
-
-optimize :: GExp a -> GExp a
-optimize (Add a b) = case (optimize a, optimize b) of
-    (Lit a, Lit b) -> Lit $ a + b
-    (oa, ob) -> Add oa ob
-optimize (If b t f) = case (optimize b, optimize t, optimize f) of
-    (BoolLit True, t', _) -> t'
-    (BoolLit False, _, f') -> f'
-    (BoolVar s, t', f') -> If (BoolVar s) t' f'
-optimize a = a
 
 -- hvordan garantere at det at alle nodene er optimized? sånn ish
