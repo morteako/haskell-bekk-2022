@@ -21,7 +21,6 @@ extra-source-files:
 executable monadtrans
   main-is: Main.hs
   other-modules:
-      Fasit
       Paths_monadtrans
   hs-source-dirs:
       src/Trans
