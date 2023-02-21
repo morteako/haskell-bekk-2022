@@ -24,7 +24,6 @@ setValue :: IntOrString a -> a -> IntOrString a
 setValue = undefined
 
 -- Exp
-data Exp = EVar String | ELit Int | EBool Bool | EAdd Exp Exp | EIf Exp Exp Exp
 
 data GExp a where
     Var :: String -> GExp Int
