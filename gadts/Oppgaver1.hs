@@ -33,7 +33,7 @@ data GExp b a where
     Lit :: Int -> GExp True Int
     BoolLit :: Bool -> GExp True Bool
     BoolVar :: String -> GExp True Bool
-    Add :: GExp b Int -> GExp b Int -> GExp b Int
+    Add :: GExp a Int -> GExp b Int -> GExp b Int
     If :: GExp b Bool -> GExp b Int -> GExp b Int -> GExp b Int
 
 -- skriv en eval-funksjon for GExp
