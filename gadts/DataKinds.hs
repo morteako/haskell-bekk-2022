@@ -5,6 +5,11 @@
 
 data Nat = Z | S Nat
 
+n :: Nat
+n = Z
+
+type N = Z
+
 natVal :: Nat
 natVal = Z
 
@@ -31,7 +36,7 @@ data Fin (n :: Nat) where
 -- -- lengthOfShortVector (LTS lt) (VCons _ VNil) = 1
 
 data Vector (n :: Nat) (a :: *) where
-    VNil :: Vector Z a
+    VNil :: Vector n a
     VCons :: a -> Vector m a -> Vector (S m) a
 
 -- append :: Vector n a -> Vector m a -> Vector (n+m) a
@@ -66,6 +71,7 @@ pCool = HCons
 makePerson :: HList [Int, String, Bool] -> Person
 makePerson (HCons a (HCons navn (HCons b HNil))) = Person{alder = a, navn = navn, cool = b}
 
+p :: HList '[Int, String, Bool]
 p =
     pAlder 0 $ pNavn "hei" $ pCool False HNil
 
